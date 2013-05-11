@@ -9,16 +9,18 @@ function movement(t){
 		// Move o objeto
 		if(Input.GetKey(KeyCode.UpArrow)){
 			transform.Translate(transform.up * m_iSpeed * Time.deltaTime, Space.World);
+			transform.Translate(transform.forward * -m_iSpeed * Time.deltaTime, Space.World);
 		}	
 		if(Input.GetKey(KeyCode.DownArrow)){
 			transform.Translate(transform.up * -m_iSpeed * Time.deltaTime, Space.World);
+			transform.Translate(transform.forward * m_iSpeed * Time.deltaTime, Space.World);
 		}
 		if(Input.GetKey(KeyCode.RightArrow)){
-			transform.Translate(transform.right * m_iSpeed * Time.deltaTime, Space.World);
+			transform.Translate(transform.right * -m_iSpeed * Time.deltaTime, Space.World);
 	
 		}
 		if(Input.GetKey(KeyCode.LeftArrow)){
-			transform.Translate(transform.right * -m_iSpeed * Time.deltaTime, Space.World);
+			transform.Translate(transform.right * m_iSpeed * Time.deltaTime, Space.World);
 
 		}
 		if(Input.GetKey(KeyCode.Space)){

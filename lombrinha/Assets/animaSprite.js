@@ -37,7 +37,7 @@ function setNewPostion(t, type){
 }
 //key commands
 function move(){
-	// mudar a função para identificar mudança de posição ao invé de detectar tecla
+	// mudar a função para identificar mudança de posição ao invés de detectar tecla
 	if(Input.GetKey(KeyCode.UpArrow)){
 		setNewPostion(this, "up");
 	}
