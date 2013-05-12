@@ -1,6 +1,6 @@
 
 var patrol = true;
-var myPoint = "caminho1";
+var myPoint = "none";
 var lastPositions = new Array();
 var wayPoint: GameObject[];
 
@@ -33,7 +33,6 @@ function sortNewWay(){
 	if(arr.length == 0){
 		lastPositions = new Array();
 		var val = Random.Range(1, wayPoint.length+1);
-		Debug.Log("caminho" + val.ToString());
 		return "caminho" + val.ToString();
 		
 	}else{
@@ -58,7 +57,11 @@ function whoIsNear(){
 	
 	if(patrol)
 	{
-	
+	//
+	}
+	if(myPoint == "none"){
+		var val = Random.Range(1, wayPoint.length+1);
+		myPoint = "caminho" + val.ToString();
 	}
 	for(var way in wayPoint)
 	{
@@ -75,7 +78,7 @@ function whoIsNear(){
 		var y:float = pos.y -  myPos.y;
 		var z:float = pos.z -  myPos.z; 	
 
-		transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToTarget)*4);
+		transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToTarget)*6);
 		//Debug.Log(distanceToTarget);
 		if(distanceToTarget < 0.1){
 			myPoint = sortNewWay();
