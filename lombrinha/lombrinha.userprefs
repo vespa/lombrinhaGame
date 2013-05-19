@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\animaSprite.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\animaNPC.js">
     <Files>
-      <File FileName="Assets\animaSprite.js" Line="20" Column="1" />
-      <File FileName="Assets\animaNPC.js" Line="17" Column="21" />
+      <File FileName="Assets\animaNPC.js" Line="2" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
