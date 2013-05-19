@@ -5,9 +5,9 @@ var spriteLines:float = 2;
 var startLine = 2;
 var numberlines;
 var framesPerSecond = 24;
-
 var currentLeft;
 var currentUp;
+var patrol = true;
 
 function setFirstPos(){
 	var pos:float = startFrame/totalFramesPerLine;
@@ -15,19 +15,28 @@ function setFirstPos(){
 	var line = numberlines * startLine;
 	renderer.material.mainTextureOffset = Vector2 (pos, line);
 }
-
-function Start () {
-
-	 currentLeft = transform.position.x;
-	 currentUp	= transform.position.y;
-	 
-	 setFirstPos();
+function setPatrol(){
 	 positions = {
 		"right":[1,[4,5,6]],
 		"left":	[1,[7,8,9,8]],
 		"up":	[2, [0,1,2]],
 		"down":	[2, [3,4,5]]
 	};
+}
+function setChase(){
+	 positions = {
+		"right":[2,[6,7]],
+		"left":	[2,[8,9]],
+		"up":	[1, [0,1]],
+		"down":	[1, [2,3]]
+	};	
+}
+function Start () {
+	 currentLeft = transform.position.x;
+	 currentUp	= transform.position.y;
+	 setFirstPos();
+	 setPatrol();
+	 //setChase();
 }
 
 //identify the atual position and change to the next
@@ -43,7 +52,7 @@ function setNewPostion(t, type){
 }
 	
 function moveNPC(){
-	var tolerate = 0.4;
+
 	var newPosX = transform.position.x;
 	var newPosY = transform.position.y;
 	
