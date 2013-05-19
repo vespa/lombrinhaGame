@@ -1,5 +1,6 @@
 
 var patrol = true;
+var speed  = 1;
 var myPoint = "none";
 var lastPositions = new Array();
 var wayPoint: GameObject[];
@@ -10,8 +11,7 @@ function Start () {
 
 function killLastPositions(arr){
 	return arr;
-}
-
+} 
 function sortNewWay(){
 
 	lastPositions.Add(myPoint);
@@ -78,7 +78,7 @@ function whoIsNear(){
 		var y:float = pos.y -  myPos.y;
 		var z:float = pos.z -  myPos.z; 	
 
-		transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToTarget)*6);
+		transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToTarget)*speed);
 		//Debug.Log(distanceToTarget);
 		if(distanceToTarget < 0.1){
 			myPoint = sortNewWay();
