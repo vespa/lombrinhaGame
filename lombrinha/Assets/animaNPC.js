@@ -30,6 +30,7 @@ function setChase(){
 		"up":	[1, [0,1]],
 		"down":	[1, [2,3]]
 	};	
+	Debug.Log("oi");
 }
 function Start () {
 	 currentLeft = transform.position.x;
@@ -58,7 +59,6 @@ function moveNPC(){
 	
 	var difX = Mathf.Abs(newPosX- currentLeft);
 	var difY = Mathf.Abs(newPosY - currentUp);
-	Debug.Log(difX + "," +difY);
 	//
 	if(difY > difX){
 		if (currentUp < newPosY){
