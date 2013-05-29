@@ -1,17 +1,41 @@
 
-var patrol = true;
-var speed  = 1;
+var patrol : boolean = true;
+var speed : float  = 1;
 var myPoint = "none";
+var wayPoint : GameObject[];
 var lastPositions = new Array();
-var wayPoint: GameObject[];
+var distanceToPlayer : int;
+var safeInitialDistance : int = 3;
+var safeDistance : int = safeInitialDistance;
+var player : Transform;
 
-function Start () {
-
+function Update () {
+	if (patrol)
+		whoIsNear();
+	
+	detectPlayer();
 }
 
-function killLastPositions(arr){
-	return arr;
-} 
+function detectPlayer () {
+	distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
+	
+	if (patrol)
+		safeDistance = safeInitialDistance;
+	else
+		safeDistance = safeInitialDistance * 3;
+	
+	if (distanceToPlayer < safeDistance) {
+		var x = player.transform.position.x - this.transform.position.x;
+		var y = player.transform.position.y - this.transform.position.y;
+		var z = player.transform.position.z - this.transform.position.z;
+		transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToPlayer)*9);
+
+		patrol = false;
+	}
+	else
+		patrol = true;
+}
+
 function sortNewWay(){
 
 	lastPositions.Add(myPoint);
@@ -84,6 +108,11 @@ function whoIsNear(){
 			myPoint = sortNewWay();
 		}		
 }
+
+function killLastPositions(arr){
+	return arr;
+} 
+
 /* 
 var target;
 for(way in waypoints){
@@ -127,6 +156,3 @@ Debug.Log(way.name);
 	}*/
  
 
-function Update () {
-	whoIsNear();
-}
