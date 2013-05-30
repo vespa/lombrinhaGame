@@ -12,10 +12,9 @@ function Start () {
 function killLastPositions(arr){
 	return arr;
 } 
+
 function sortNewWay(){
-
 	lastPositions.Add(myPoint);
-
 	var removeArr = lastPositions;
 	var removeCount = lastPositions.length;
 
@@ -30,15 +29,15 @@ function sortNewWay(){
 				}
 			}
 	}
-	if(arr.length == 0){
+	if(arr.length == 5){
 		lastPositions = new Array();
-		var val = Random.Range(1, wayPoint.length+1);
-		return "caminho" + val.ToString();
-		
-	}else{
+	}
+	var name = closestObj(arr);
+	return name;
+}
+function closestObj(arr){
 		var closest: GameObject; 
 		var closestDist = Mathf.Infinity; 
-		
 		for (way in arr) { 
 			 var dist = (transform.position - way.transform.position).sqrMagnitude; 
 	         if (dist < closestDist) { 
@@ -47,29 +46,25 @@ function sortNewWay(){
 	         } 
 	    }	
 		return closest.name;
-	}
 }
-
 function whoIsNear(){
-	if(wayPoint.Length == 0){
-		wayPoint = GameObject.FindGameObjectsWithTag("caminho");
-	}
-	
-	if(patrol)
-	{
-	//
-	}
-	if(myPoint == "none"){
-		var val = Random.Range(1, wayPoint.length+1);
-		myPoint = "caminho" + val.ToString();
-	}
-	for(var way in wayPoint)
-	{
-		if(way.name == myPoint){
-	  			target = way;
-	  			break;
-	  	};
-	}
+		// se waypoint ainda não foi declarado, ele prenche o array
+		if(wayPoint.Length == 0){
+			wayPoint = GameObject.FindGameObjectsWithTag("caminho");
+		}
+		
+		// se myPoint ainda não foi definido, gere um
+		if(myPoint == "none"){
+			myPoint = closestObj(wayPoint);
+		}
+		//
+		for(var way in wayPoint)
+		{
+			if(way.name == myPoint){
+		  			target = way;
+		  			break;
+		  	};
+		}
 		// transferir esta funcao para alguma lib universal		
 		var distanceToTarget = Vector3.Distance(this.transform.position, target.transform.position);
 		var pos = target.transform.position;
