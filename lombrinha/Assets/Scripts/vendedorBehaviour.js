@@ -1,6 +1,7 @@
 #pragma strict
 
 var player : GameObject;
+var vendedor : GameObject;
 var balao : Transform;
 var somSoco : AudioClip;
 
@@ -13,6 +14,8 @@ function OnCollisionEnter (collision : Collision) {
 		audio.PlayOneShot(somSoco);
 		Instantiate(balao, player.transform.position, player.transform.rotation);
 		player.GetComponent(playerBehaviour).temBalao = true;
+		//vendedor.
+		
 	}
 }
 

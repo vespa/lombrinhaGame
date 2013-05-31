@@ -56,6 +56,8 @@
      <Compile Include="Assets\Scripts\playerBehaviour.js" />
      <Compile Include="Assets\Scripts\vendedorBehaviour.js" />
      <Compile Include="Assets\pathFinder.js" />
+     <Compile Include="Assets\script.js" />
+     <Compile Include="Assets\vendedorAnimate.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
