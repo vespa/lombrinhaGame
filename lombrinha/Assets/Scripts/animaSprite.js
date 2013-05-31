@@ -9,6 +9,7 @@ var framesPerSecond:float =20.0;
 var spriteDistance:float;
 var textureSize;
 
+var player : GameObject;
 
 //define wich frames belongs to a specific position
 var positions = {
@@ -63,10 +64,11 @@ function Start () {
 	textureSize 	= renderer.material.mainTexture.width;
 	spriteDistance 	= getSpriteDistance();
 	numberlines  = 1.0/spriteLines;
-	//var currentPos = spriteDistance * startFrame;
-	//renderer.material.mainTextureOffset = Vector2 (currentPos, 0);	
+	
+	player = GameObject.Find("player");
 }
 
 function Update () {
-	move();
+	if (player.GetComponent(animaPlayer).parado == false)
+		move();
 }
