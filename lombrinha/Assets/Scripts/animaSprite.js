@@ -1,40 +1,44 @@
-
-//inital frame
-var startFrame = 5;
-
 // how many positions have the sprite
-var totalFrames = 12;
+var totalFramesPerLine:float = 10;
+var startLine = 2;
+var spriteLines:float = 2;
+var numberlines;
 // speed of sprite changing. The zero in the end IS important.
 var framesPerSecond:float =20.0;
 // these two just starts vars where we'll calculate where are the frames positions
 var spriteDistance:float;
 var textureSize;
 
+
 //define wich frames belongs to a specific position
 var positions = {
-	"right":[9,10,11],
-	"left":	[6,7,8],
-	"up":	[0,1,2],
-	"down":	[3,4,5]
+	"right":[2,[0,1,2]],
+	"left":	[1,[6,7,8]],
+	"up":	[1, [0,1,2]],
+	"down":	[1, [3,4,5]]
 };
 
 function getSpriteDistance(){
 	var initialValue:float 	= 1.0;
-	var distance:float 		= totalFrames;
+	var distance:float 		= totalFramesPerLine;
 	var result				= initialValue/distance;
 	return result;
 }
+
+
 //identify the atual position and change to the next
 function setNewPostion(t, type){
 	var index : int = Time.time * framesPerSecond;
 	//
 	var pos = positions[type];
-	var ct = pos.length;
-	//
+	var line = numberlines * pos[0];
+	var ct = pos[1].length;
 	index = index % (ct);
-	var currentPos = spriteDistance * pos[index];
-	t.renderer.material.mainTextureOffset = Vector2 (currentPos, 0);
+	var currentPos = (1.0/totalFramesPerLine) * pos[1][index];
+	t.renderer.material.mainTextureOffset = Vector2 (currentPos, line);
 }
+
+
 //key commands
 function move(){
 	// mudar a função para identificar mudança de posição ao invés de detectar tecla
@@ -58,8 +62,9 @@ function move(){
 function Start () {
 	textureSize 	= renderer.material.mainTexture.width;
 	spriteDistance 	= getSpriteDistance();
-	var currentPos = spriteDistance * startFrame;
-	renderer.material.mainTextureOffset = Vector2 (currentPos, 0);	
+	numberlines  = 1.0/spriteLines;
+	//var currentPos = spriteDistance * startFrame;
+	//renderer.material.mainTextureOffset = Vector2 (currentPos, 0);	
 }
 
 function Update () {

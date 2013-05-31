@@ -5,7 +5,6 @@ function Start () {
 	while(count--){
 		var child = MyPaths.GetChild(count);
 		child.name = "caminho" + count.ToString();
-		//Debug.Log(child.name);
 	}
 }
 
