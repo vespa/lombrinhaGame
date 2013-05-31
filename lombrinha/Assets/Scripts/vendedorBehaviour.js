@@ -3,6 +3,7 @@
 var player : GameObject;
 var balao : Transform;
 var somSoco : AudioClip;
+var vendedor: GameObject;
 
 var distanciaPontoColeta : float;
 
@@ -22,6 +23,8 @@ function ataque () {
 				audio.PlayOneShot(somSoco);
 				Instantiate(balao, player.transform.position, player.transform.rotation);
 				player.GetComponent(playerBehaviour).temBalao = true;
+				transform.parent.gameObject.GetComponent(vendedorAnimate).isAtacked = true;
+				
 			}
 	}
 }
