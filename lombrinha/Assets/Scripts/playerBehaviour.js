@@ -1,4 +1,5 @@
 #pragma strict
 
-var objetivo = 5;
-var temBalao = false;
+var vidas : int = 3;
+var objetivo : int = 5;
+var temBalao : boolean = false;
