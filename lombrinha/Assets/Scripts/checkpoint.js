@@ -22,9 +22,9 @@ function OnCollisionEnter (collision : Collision) {
 					audio.PlayOneShot(somCriancas02); 
 
 				balao = GameObject.FindGameObjectWithTag("balao");
-				if (balao)
+				if (balao.GetComponent(balaoBehaviour).stolen){
 					Destroy(balao);
-				
+				}		
 				player.GetComponent(playerBehaviour).temBalao = false;
 			}
 			

@@ -18,7 +18,7 @@ function looking(t){
 }
 
 function dead(t){	
-	var index : int = Timer *5;
+	var index : int = Timer *3;
 	index = Mathf.Floor(index);
 	var pos = atackedPos;
 	var ct = pos.length;

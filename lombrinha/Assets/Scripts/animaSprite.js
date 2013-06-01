@@ -64,7 +64,6 @@ function move(){
 	}	
 	//
 	if (Input.GetKey(KeyCode.Space)){
-		Debug.Log(currentDirection);
 		if (currentDirection == "left" || currentDirection == "atackLeft"){
 			setNewPostion(this, "atackLeft"); 
 		}else{
@@ -78,7 +77,6 @@ function Start () {
 	textureSize 	= renderer.material.mainTexture.width;
 	spriteDistance 	= getSpriteDistance();
 	numberlines  = 1.0/spriteLines;
-	
 	player = GameObject.Find("player");
 }
 

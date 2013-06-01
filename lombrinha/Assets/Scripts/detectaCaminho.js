@@ -9,9 +9,9 @@ function Start () {
 
 }
 
-function killLastPositions(arr){
-	return arr;
-} 
+function Update () {
+	whoIsNear();
+}
 
 function sortNewWay(){
 	lastPositions.Add(myPoint);
@@ -79,49 +79,5 @@ function whoIsNear(){
 			myPoint = sortNewWay();
 		}		
 }
-/* 
-var target;
-for(way in waypoints){
-Debug.Log(way.name);
-	if(way.name == "caminho5"){
-		target = way;
-		
-	}
-	
-	if(typeof target!= null){
-	    var pos = target.transform.position;
-	    var myPos =  transform.position;
-		var x = pos.x -  myPos.x;
-		var y = pos.y -  myPos.y;
-		var z = pos.z - myPos.z; 	
-			Debug.Log("acheidsfd");
-		//transform.Translate(Vector3(x,y,z) * (Time.deltaTime/distanceToPlayer)*9);	
-	}
-}*/
-
-/*
-	var closest: GameObject; 
-	var closestDist = Mathf.Infinity; 
-	var waypoints = GameObject.FindGameObjectsWithTag("caminho"); 
-	if(patrol){
-		for (waypoint in waypoints) { 
-			 var dist = (transform.position - waypoint.transform.position).sqrMagnitude; 
-	         if (dist < closestDist) { 
-	            closestDist = dist; 
-	            closest = waypoint; 
-	         } 
-	         transform.LookAt(closest.transform); 
-	         var pos = closest.transform.position;
-	         var myPos =  this.transform.position;
-			 var x = pos.x -  myPos.x;
-			 var y = pos.y -  myPos.y;
-			 var z = pos.z - myPos.z;  
-			 Debug.Log(x);       
-	        // transform.Translate(Vector3(x,y,z) * (Time.deltaTime)*1);
-	    }
-	}*/
  
 
-function Update () {
-	whoIsNear();
-}
